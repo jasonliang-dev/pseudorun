@@ -178,16 +178,18 @@ runButton.onclick = () => {
 
     line = line
       .substring(0, lineEnd)
-      .replace(/true/i, 'true')
-      .replace(/false/i, 'false')
-      .replace(/ and /i, ' && ')
-      .replace(/ or /i, ' || ')
-      .replace(/[(]not /i, '(!')
-      .replace(/ not /i, ' !')
-      .replace(/[^<>]=/, '==');
+      .replace(/true/gi, 'true')
+      .replace(/false/gi, 'false')
+      .replace(/ and /gi, ' && ')
+      .replace(/ or /gi, ' || ')
+      .replace(/[(]not /gi, '(!')
+      .replace(/ not /gi, ' !')
+      .replace(/=/g, '==')
+      .replace(/!==/g, '!=')
+      .replace(/<==/g, '<=')
+      .replace(/>==/g, '>=');
     const firstWS = indexOfEnd(line, ' ');
     line = line.substring(0, firstWS).toLowerCase() + line.substring(firstWS);
-    console.log(line);
     convertLine(line);
   }
 
