@@ -1,13 +1,103 @@
 const runButton = document.getElementById('runbutton');
 const textarea = document.getElementById('pseudocode');
 const output = document.getElementById('output');
-const indent = '    ';
+const errorDisplay = document.getElementById('error');
+
+const examples = [
+  `Read x
+Print x`,
+  `Set i to 1
+While (i <= 10)
+    Print i
+    Set i to i + 1`,
+  `Set i to 1
+While (i <= 100)
+    If (i % 15 = 0)
+        Print "FizzBuzz"
+    ElseIf (i % 3 = 0)
+        Print "Fizz"
+    ElseIf (i % 5 = 0)
+        Print "Buzz"
+    Else
+        Print i
+    Set i to i + 1`,
+  `Function fact(n)
+    If (n = 0)
+        Return 1
+    Return n * fact(n - 1)
+
+Read num
+Print fact(num)`,
+];
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.keyCode === 13 && evt.ctrlKey) {
+    runButton.onclick();
+  }
+});
+
+let indent = '    ';
 
 let jscode;
-let lastIndentLevel;
+let saveIndentLevel;
+
+const indexOfEnd = (str, elt) => {
+  let index = str.indexOf(elt);
+
+  if (index === -1) {
+    index = str.length;
+  }
+
+  return index;
+};
+
+const choose = (arr) => {
+  const index = Math.floor(Math.random() * arr.length);
+  return arr[index];
+};
+
+// eslint-disable-next-line no-unused-vars
+const chooseExample = (i) => {
+  textarea.value = examples[i];
+};
+
+// eslint-disable-next-line no-unused-vars
+const setIndent = (newIndentSize) => {
+  const saveIndent = indent;
+  indent = '';
+
+  for (let i = 0; i < newIndentSize; i++) {
+    indent += ' ';
+  }
+
+  const lines = textarea.value.split('\n');
+  let newText = '';
+
+  for (let i = 0; i < lines.length; i++) {
+    let currentIndentLevel = 0;
+
+    while (lines[i].includes(saveIndent)) {
+      currentIndentLevel++;
+      lines[i] = lines[i].replace(saveIndent, '');
+    }
+
+    while (currentIndentLevel > 0) {
+      currentIndentLevel--;
+      lines[i] = indent + lines[i];
+    }
+
+    newText += lines[i];
+
+    if (i < lines.length - 1) {
+      newText += '\n';
+    }
+  }
+
+  textarea.value = newText;
+};
 
 const displayError = (error) => {
-  output.innerHTML = error;
+  errorDisplay.innerHTML = error;
   throw error;
 };
 
@@ -16,32 +106,45 @@ const convertLine = (line) => {
 
   const lineWords = line.split(' ');
 
-  switch (lineWords[0].toLowerCase()) {
+  switch (lineWords[0]) {
     case '':
       break;
     case 'set':
       rest = line.substring(line.indexOf('to ') + 3);
       jscode += `${lineWords[1]} = ${rest}\n`;
       break;
+
     case 'get':
     case 'read':
-      jscode += `temp = prompt()
-${lineWords[1]} = +temp || temp\n`;
+      jscode += `reserve = prompt()
+${lineWords[1]} = +reserve || reserve\n`;
       break;
+
     case 'print':
     case 'write':
-      rest = line.substring(line.indexOf(' ') + 1).replace(/,/g, '+');
-      jscode += `output.innerHTML += "<p>" + ${rest} + "</p>"\n`;
+      rest = line.substring(line.indexOf(' ') + 1).replace(/, /g, ' + ');
+      jscode += `output.innerHTML += ${rest} + "</br>"\n`;
       break;
+
     case 'if':
-    case 'while':
-      lastIndentLevel++;
-      jscode += `${line} {\n`;
-      break;
     case 'else':
-      lastIndentLevel++;
+    case 'while':
+    case 'function':
+      saveIndentLevel++;
       jscode += `${line} {\n`;
       break;
+
+    case 'elif':
+    case 'elseif':
+      saveIndentLevel++;
+      rest = line.substring(line.indexOf('if ') + 3);
+      jscode += `else if ${rest} {\n`;
+      break;
+
+    case 'return':
+      jscode += `${line}\n`;
+      break;
+
     default:
       displayError(new Error(`Unreconized keyword '${lineWords[0]}'`));
   }
@@ -49,30 +152,47 @@ ${lineWords[1]} = +temp || temp\n`;
 
 runButton.onclick = () => {
   output.innerHTML = '';
+  errorDisplay.innerHTML = '';
 
   const lines = textarea.value.split('\n');
 
   jscode = '';
-  lastIndentLevel = 0;
+  saveIndentLevel = 0;
 
   for (let i = 0; i < lines.length; i++) {
     let currentIndentLevel = 0;
 
-    while (lines[i].includes(indent)) {
+    let line = lines[i];
+
+    while (line.includes(indent)) {
       currentIndentLevel++;
-      lines[i] = lines[i].replace(indent, '');
+      line = line.replace(indent, '');
     }
 
-    if (currentIndentLevel < lastIndentLevel) {
-      lastIndentLevel--;
+    while (currentIndentLevel < saveIndentLevel) {
+      saveIndentLevel--;
       jscode += '}\n';
     }
 
-    convertLine(lines[i]);
+    const lineEnd = indexOfEnd(line, '//');
+
+    line = line
+      .substring(0, lineEnd)
+      .replace(/true/i, 'true')
+      .replace(/false/i, 'false')
+      .replace(/ and /i, ' && ')
+      .replace(/ or /i, ' || ')
+      .replace(/[(]not /i, '(!')
+      .replace(/ not /i, ' !')
+      .replace(/[^<>]=/, '==');
+    const firstWS = indexOfEnd(line, ' ');
+    line = line.substring(0, firstWS).toLowerCase() + line.substring(firstWS);
+    console.log(line);
+    convertLine(line);
   }
 
-  while (lastIndentLevel > 0) {
-    lastIndentLevel--;
+  while (saveIndentLevel > 0) {
+    saveIndentLevel--;
     jscode += '}\n';
   }
 
@@ -87,3 +207,12 @@ ${jscode}
     displayError(e);
   }
 };
+
+document.getElementById('toast').innerHTML = choose([
+  'Run pseudocode in the browser',
+  'Now with 20% less fat',
+  'How was the midterm?',
+  'If there\'s a bug I probably won\'t fix it',
+  'I\'m great with names',
+  'Try Ctrl+Enter',
+]);

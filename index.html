@@ -4,32 +4,75 @@
     <meta charset="UTF-8"/>
     <title>Pseudorun</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+     .mono {
+       font-family: "Lucida Console", Monaco, monospace;
+     }
+     button {
+       margin: 1em;
+       margin-top: 0;
+       margin-right: 0;
+     }
+    </style>
     <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body style="background-color: #f8f8f8">
     <div class="container">
 
-      <h1 style="margin-top: 1em">Pseudorun</h1>
-      <p class="lead">
-        Run pseudocode in the browser
-      </p>
+      <h1 style="margin-top: .5em">Pseudorun</h1>
+      <p class="lead" id="toast">.</p>
 
+      <div class="row">
 
-      <button type="button" class="btn btn-primary" id="runbutton" style="margin-bottom: 1em">Run</button>
+        <button type="button" class="btn btn-primary" id="runbutton">Run</button>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Indent Size
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" onclick="setIndent(2)">2</a>
+            <a class="dropdown-item" onclick="setIndent(3)">3</a>
+            <a class="dropdown-item" onclick="setIndent(4)">4</a>
+            <a class="dropdown-item" onclick="setIndent(5)">5</a>
+            <a class="dropdown-item" onclick="setIndent(6)">6</a>
+            <a class="dropdown-item" onclick="setIndent(7)">7</a>
+            <a class="dropdown-item" onclick="setIndent(8)">8</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Examples
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" onclick="chooseExample(0)">Read/Print</a>
+            <a class="dropdown-item" onclick="chooseExample(1)">1 to 10</a>
+            <a class="dropdown-item" onclick="chooseExample(2)">FizzBuzz</a>
+            <a class="dropdown-item" onclick="chooseExample(3)">Factorial</a>
+          </div>
+        </div>
+
+      </div>
 
       <div class="row">
 
         <div class="col-6">
-          <textarea class="form-control" rows="16" id="pseudocode"></textarea>
+          <textarea class="form-control mono" rows="16" id="pseudocode" placeholder="Enter your pseudocode here!"></textarea>
         </div>
 
         <div class="col-6">
           <h4>Output</h4>
-          <p id="output"></p>
+          <p class="mono" id="output" style="color: #218838"></p>
+          <p class="mono" id="error" style="color: #CC342B"></p>
         </div>
 
       </div>
 
     </div> <!-- end of container -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
