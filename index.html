@@ -28,8 +28,8 @@
         <button type="button" class="btn btn-primary" id="runbutton">Run</button>
 
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Indent Size
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Indent Size: <span id="indentdisplay">4</span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" onclick="setIndent(2)">2</a>
@@ -43,7 +43,23 @@
         </div>
 
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Re-indent
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" onclick="reindent(2)">2</a>
+            <a class="dropdown-item" onclick="reindent(3)">3</a>
+            <a class="dropdown-item" onclick="reindent(4)">4</a>
+            <a class="dropdown-item" onclick="reindent(5)">5</a>
+            <a class="dropdown-item" onclick="reindent(6)">6</a>
+            <a class="dropdown-item" onclick="reindent(7)">7</a>
+            <a class="dropdown-item" onclick="reindent(8)">8</a>
+          </div>
+        </div>
+
+
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Examples
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

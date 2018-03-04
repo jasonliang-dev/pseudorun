@@ -1,5 +1,6 @@
 const toast = document.getElementById('toast');
 const runButton = document.getElementById('runbutton');
+const indentDisplay = document.getElementById('indentdisplay');
 const textarea = document.getElementById('pseudocode');
 const output = document.getElementById('output');
 const errorDisplay = document.getElementById('error');
@@ -58,15 +59,21 @@ const choose = (arr) => {
 };
 
 const setIndent = (newIndentSize) => {
-  const saveIndent = indent;
   indent = '';
 
   for (let i = 0; i < newIndentSize; i++) {
     indent += ' ';
   }
 
+  indentDisplay.innerHTML = newIndentSize;
+};
+
+const reindent = (indentSize) => {
+  const saveIndent = indent;
   const lines = textarea.value.split('\n');
   let newText = '';
+
+  setIndent(indentSize);
 
   for (let i = 0; i < lines.length; i++) {
     let currentIndentLevel = 0;
@@ -94,9 +101,9 @@ const setIndent = (newIndentSize) => {
 // eslint-disable-next-line no-unused-vars
 const chooseExample = (i) => {
   const prevIndent = indent.length;
-  setIndent(4);
+  reindent(4);
   textarea.value = examples[i];
-  setIndent(prevIndent);
+  reindent(prevIndent);
 };
 
 const displayError = (error) => {
