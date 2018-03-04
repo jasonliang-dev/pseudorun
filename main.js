@@ -131,7 +131,7 @@ ${lineWords[1]} = +reserve || reserve\n`;
     case 'while':
     case 'function':
       saveIndentLevel++;
-      jscode += `${line} {\n`;
+      jscode += `${line.replace('[]', '')} {\n`;
       break;
 
     case 'elif':
@@ -143,6 +143,19 @@ ${lineWords[1]} = +reserve || reserve\n`;
 
     case 'return':
       jscode += `${line}\n`;
+      break;
+
+    case 'array':
+    case 'boolean':
+    case 'number':
+    case 'integer':
+    case 'float':
+    case 'string':
+      rest = line
+        .substring(line.indexOf(' ') + 1)
+        .replace('[', '= new Array(')
+        .replace(']', ')');
+      jscode += `${rest}\n`;
       break;
 
     default:
