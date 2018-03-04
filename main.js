@@ -126,13 +126,16 @@ const convertLine = (line) => {
 
     case 'get':
     case 'read':
+    case 'input':
       jscode += `reserve = prompt('Enter Input...')
 ${lineWords[1]} = +reserve || reserve\n`;
       break;
 
     case 'print':
     case 'write':
-      rest = line.substring(line.indexOf(' ') + 1).replace(/, /g, ' + ');
+    case 'display':
+    case 'output':
+      rest = line.substring(line.indexOf(' ') + 1);
       jscode += `output.innerHTML += ${rest} + "</br>"\n`;
       break;
 
@@ -157,7 +160,6 @@ ${lineWords[1]} = +reserve || reserve\n`;
 
     case 'array':
     case 'boolean':
-    case 'number':
     case 'integer':
     case 'float':
     case 'string':
