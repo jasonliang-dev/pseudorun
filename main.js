@@ -1,3 +1,4 @@
+const toast = document.getElementById('toast');
 const runButton = document.getElementById('runbutton');
 const textarea = document.getElementById('pseudocode');
 const output = document.getElementById('output');
@@ -225,11 +226,15 @@ ${jscode}
   }
 };
 
-document.getElementById('toast').innerHTML = choose([
-  'Run pseudocode in the browser',
-  'Now with 20% less fat',
-  'How was the midterm?',
-  'If there\'s a bug I probably won\'t fix it',
-  'I\'m great with names',
-  'Try Ctrl+Enter',
-]);
+toast.innerHTML = 'Run pseudocode in the browser';
+
+if (Math.random() < 0.5) {
+  toast.innerHTML = choose([
+    'Now with 20% less fat',
+    'How was the midterm?',
+    'If there\'s a bug I probably won\'t fix it',
+    'I\'m great with names',
+    'Try Ctrl+Enter',
+    'Kinda like Python',
+  ]);
+}
