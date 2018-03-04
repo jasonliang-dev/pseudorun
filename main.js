@@ -56,12 +56,6 @@ const choose = (arr) => {
   return arr[index];
 };
 
-// eslint-disable-next-line no-unused-vars
-const chooseExample = (i) => {
-  textarea.value = examples[i];
-};
-
-// eslint-disable-next-line no-unused-vars
 const setIndent = (newIndentSize) => {
   const saveIndent = indent;
   indent = '';
@@ -94,6 +88,14 @@ const setIndent = (newIndentSize) => {
   }
 
   textarea.value = newText;
+};
+
+// eslint-disable-next-line no-unused-vars
+const chooseExample = (i) => {
+  const prevIndent = indent.length;
+  setIndent(4);
+  textarea.value = examples[i];
+  setIndent(prevIndent);
 };
 
 const displayError = (error) => {
