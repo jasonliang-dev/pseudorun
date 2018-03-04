@@ -170,8 +170,23 @@ ${lineWords[1]} = +reserve || reserve\n`;
       jscode += `${rest}\n`;
       break;
 
+    case 'increment':
+      rest = line.substring(line.indexOf(' ') + 1);
+      jscode += `${rest}++\n`;
+      break;
+
+    case 'decrement':
+      rest = line.substring(line.indexOf(' ') + 1);
+      jscode += `${rest}--\n`;
+      break;
+
     default:
-      displayError(new Error(`Unreconized keyword '${lineWords[0]}'`));
+      if (lineWords[1] === '<--') {
+        rest = line.substring(line.indexOf('<--') + 3);
+        jscode += `${lineWords[0]} = ${rest}\n`;
+      } else {
+        displayError(new Error(`Unreconized keyword '${lineWords[0]}'`));
+      }
   }
 };
 
