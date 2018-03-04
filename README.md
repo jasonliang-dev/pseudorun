@@ -69,6 +69,8 @@ A condition is a part of code that will evaluate to either true or false when ra
 | `cond1 or cond2`  | True if either cond1 or cond2 is true      |
 | `not cond1`       | cond1 becomes false if true and vice versa |
 
+> Alternatives to `=`: `equals`, `is equal to`
+
 ### If/Else
 
 `If` statements runs the code that is indented below it if the condition in brackets is true.
