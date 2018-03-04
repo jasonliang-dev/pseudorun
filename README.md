@@ -110,7 +110,7 @@ Else
 Create a loop by using `While`. The code inside the loop will continue to run as long as the condition within the brackets is true.
 
 ```
-Set count = 1;
+Set count to 1
 While (count <= 10)
     Print count
     Increment count
