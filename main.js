@@ -198,16 +198,27 @@ runButton.onclick = () => {
 
   jscode = '';
   saveIndentLevel = 0;
+  let lastIndentLevel = 0;
 
   for (let i = 0; i < lines.length; i++) {
     let currentIndentLevel = 0;
 
     let line = lines[i];
 
-    while (line.includes(indent)) {
-      currentIndentLevel++;
-      line = line.replace(indent, '');
+    while (line.charAt(0) === ' ') {
+      if (line.includes(indent)) {
+        currentIndentLevel++;
+        line = line.replace(indent, '');
+      } else {
+        displayError(new Error(`Indentation mismatch on line ${i + 1}`));
+      }
     }
+
+    if (currentIndentLevel - lastIndentLevel >= 2) {
+      displayError(new Error(`Unexpected indentation on line ${i + 1}`));
+    }
+
+    lastIndentLevel = currentIndentLevel;
 
     while (currentIndentLevel < saveIndentLevel) {
       saveIndentLevel--;
