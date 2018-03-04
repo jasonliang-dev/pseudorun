@@ -126,7 +126,7 @@ const convertLine = (line) => {
 
     case 'get':
     case 'read':
-      jscode += `reserve = prompt()
+      jscode += `reserve = prompt('Enter Input...')
 ${lineWords[1]} = +reserve || reserve\n`;
       break;
 
