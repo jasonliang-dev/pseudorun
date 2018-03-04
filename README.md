@@ -42,7 +42,7 @@ Read x
 A message can be displayed to the user when asking for input.
 
 ```
-Read x "Enter your name"
+Read name "Enter your name"
 Write "Hello " + name + "!"
 ```
 
