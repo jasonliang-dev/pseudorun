@@ -21,6 +21,16 @@ Write a comment by using `//`.
 Set x to "This line will be executed"
 ```
 
+### Output
+
+Display a value to output.
+
+```
+Write "Hello There!"
+```
+
+> Alternatives to `Write`: `Print`, `Display`, `Output`
+
 ### Input
 
 Read the value given by the user and store it in a variable `x`.
@@ -29,18 +39,14 @@ Read the value given by the user and store it in a variable `x`.
 Read x
 ```
 
+A message can be displayed to the user when asking for input.
+
+```
+Read x "Enter your name"
+Write "Hello " + name + "!"
+```
+
 > Alternatives to `Read`: `Get`, `Input`
-
-### Output
-
-Display a value to output.
-
-```
-Read x
-Write "You entered ", x
-```
-
-> Alternatives to `Write`: `Print`, `Display`, `Output`
 
 ### Increment/Decrement
 

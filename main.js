@@ -127,7 +127,8 @@ const convertLine = (line) => {
     case 'get':
     case 'read':
     case 'input':
-      jscode += `reserve = prompt('Enter Input...')
+      rest = line.substring(indexOfEnd(line, lineWords[2])).replace(/['"]/g, '');
+      jscode += `reserve = prompt('${rest}' || 'Enter Input...')
 ${lineWords[1]} = +reserve || reserve\n`;
       break;
 
