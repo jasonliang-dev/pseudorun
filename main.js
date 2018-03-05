@@ -241,8 +241,12 @@ runButton.onclick = () => {
       .replace(/ equals /gi, ' == ')
       .replace(/ is equal to /gi, ' == ')
       .replace(/!==/g, '!=')
+      .replace(/ is not equal to /gi, ' != ')
+      .replace(/ does not equal /gi, ' != ')
       .replace(/<==/g, '<=')
-      .replace(/>==/g, '>=');
+      .replace(/ is less than /gi, ' <= ')
+      .replace(/>==/g, '>=')
+      .replace(/ is greater than /gi, ' >= ');
     const firstWS = indexOfEnd(line, ' ');
     line = line.substring(0, firstWS).toLowerCase() + line.substring(firstWS);
     convertLine(line);

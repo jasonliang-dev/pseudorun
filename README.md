@@ -77,6 +77,12 @@ A condition is a part of code that will evaluate to either true or false when ra
 
 > Alternatives to `=`: `equals`, `is equal to`
 
+> Alternatives to `!=`: `is not equal to`, `does not equal`
+
+> Alternative to `<=`: `is less than`
+
+> Alternative to `>=`: `is greater than`
+
 ### If/Else
 
 `If` statements runs the code that is indented below it if the condition in brackets is true.
