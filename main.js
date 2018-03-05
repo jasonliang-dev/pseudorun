@@ -58,6 +58,42 @@ const choose = (arr) => {
   return arr[index];
 };
 
+// eslint-disable-next-line no-unused-vars
+const IsEmpty = arr => arr.length === 0;
+
+// eslint-disable-next-line no-unused-vars
+const Push = (arr, value) => {
+  arr.push(value);
+};
+
+// eslint-disable-next-line no-unused-vars
+const Pop = arr => arr.pop();
+
+// eslint-disable-next-line no-unused-vars
+const Enque = (arr, value) => {
+  arr.unshift(value);
+};
+
+// eslint-disable-next-line no-unused-vars
+const Deque = arr => arr.shift();
+
+// eslint-disable-next-line no-unused-vars
+const Insert = (arr, value) => {
+  Push(arr, value);
+};
+
+// eslint-disable-next-line no-unused-vars
+const Delete = (arr, value) => {
+  const index = arr.indexOf(value);
+
+  if (index !== -1) {
+    arr.splice(index, 1);
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const IsThere = (arr, value) => arr.indexOf(value) !== -1;
+
 const setIndent = (newIndentSize) => {
   indent = '';
 
