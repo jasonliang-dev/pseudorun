@@ -226,10 +226,8 @@ runButton.onclick = () => {
       jscode += '}\n';
     }
 
-    const lineEnd = indexOfEnd(line, '//');
-
     line = line
-      .substring(0, lineEnd)
+      .substring(0, indexOfEnd(line, '//'))
       .replace(/else if/i, 'else if')
       .replace(/true/gi, 'true')
       .replace(/false/gi, 'false')
