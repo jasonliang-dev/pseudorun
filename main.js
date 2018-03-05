@@ -28,7 +28,7 @@ While (i <= 100)
         Return 1
     Return n * fact(n - 1)
 
-Read num
+Read num "Enter a number"
 Print fact(num)`,
 ];
 
@@ -265,8 +265,6 @@ ${jscode}
   }
 };
 
-toast.innerHTML = 'Run pseudocode in the browser';
-
 if (Math.random() < 0.5) {
   toast.innerHTML = choose([
     'Now with 20% less fat',
@@ -275,5 +273,8 @@ if (Math.random() < 0.5) {
     'I\'m great with names',
     'Try Ctrl+Enter',
     'Kinda like Python',
+    'Try not to create an infinite loop!',
   ]);
+} else {
+  toast.innerHTML = 'Run pseudocode in the browser';
 }
