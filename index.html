@@ -15,6 +15,7 @@
        margin-right: 0;
      }
     </style>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body style="background-color: #f8f8f8">
@@ -25,11 +26,11 @@
 
       <div class="row">
 
-        <button type="button" class="btn btn-primary" id="runbutton">Run</button>
+        <button type="button" class="btn btn-primary" id="runbutton"><i class="fas fa-play"></i> Run</button>
 
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Indent Size: <span id="indentdisplay">4</span>
+            <i class="fas fa-indent"></i> Indent Size: <span id="indentdisplay">4</span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" onclick="setIndent(2)">2</a>
@@ -44,7 +45,7 @@
 
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Re-indent
+            <i class="fas fa-cog"></i> Re-indent
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" onclick="reindent(2)">2</a>
@@ -60,7 +61,7 @@
 
         <div class="dropdown">
           <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Examples
+            <i class="fas fa-code"></i> Examples
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" onclick="chooseExample(0)">Read/Print</a>
@@ -70,7 +71,7 @@
           </div>
         </div>
 
-        <a href="https://github.com/SummerJacket/pseudorun/blob/master/README.md" class="btn btn-info" role="button">Pseudocode Reference</a>
+        <a href="https://github.com/SummerJacket/pseudorun/blob/master/README.md" class="btn btn-info" role="button"><i class="fas fa-book"></i> Pseudocode Reference</a>
 
       </div>
 
