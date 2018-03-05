@@ -12,6 +12,34 @@ Set num to 10
 
 > Alternative `num <-- 10`
 
+**Note**: The following is a list of variable and function names that are reserved. Do *not* use these or bad things may happen:
+
+- `chooseExample`
+- `choose`
+- `convertLine`
+- `displayError`
+- `errorDisplay`
+- `examples`
+- `indentDisplay`
+- `indent`
+- `indexOfEnd`
+- `jscode`
+- `output`
+- `reindent`
+- `runButton`
+- `saveIndentLevel`
+- `setIndent`
+- `textarea`
+- `toast`
+- `IsEmpty`
+- `Push`
+- `Pop`
+- `Enque`
+- `Deque`
+- `Insert`
+- `Delete`
+- `IsThere`
+
 ### Comments
 
 Write a comment by using `//`.
