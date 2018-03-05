@@ -236,6 +236,8 @@ runButton.onclick = () => {
       .replace(/ and /gi, ' && ')
       .replace(/ or /gi, ' || ')
       .replace(/[(]not /gi, '(!')
+      .replace(/ not[(]/gi, '!(')
+      .replace(/[(]not[(]/gi, '(!(')
       .replace(/ not /gi, ' !')
       .replace(/=/g, '==')
       .replace(/ equals /gi, ' == ')
