@@ -314,6 +314,12 @@ if (Math.random() < 0.5) {
     'Try Ctrl+Enter',
     'Kinda like Python',
     'Try not to create an infinite loop!',
+    'Complex Randy',
+    'Add for amity',
+    'wtb 20 trout',
+    'Who did this?',
+    'How do functions break up? They stop calling each other!',
+    'How do ships send files? Pier-to-Pier.',
   ]);
 } else {
   toast.innerHTML = 'Run pseudocode in the browser';
