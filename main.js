@@ -101,7 +101,7 @@ const reindent = (indentSize) => {
 // eslint-disable-next-line no-unused-vars
 const chooseExample = (i) => {
   const prevIndent = indent.length;
-  reindent(4);
+  setIndent(4);
   textarea.value = examples[i];
   reindent(prevIndent);
 };
