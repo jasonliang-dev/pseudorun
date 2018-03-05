@@ -169,7 +169,7 @@ The following functions are already defined. You can override them, but you can 
 - `Push(array, value)`: adds a value to the top of an array.
 - `Pop(array)`: removes and returns the value from the top of an array.
 - `Enque(array, value)`: same as `Push`.
-- `Deque`: removes and returns the value from the bottom of an array.
+- `Deque(array)`: removes and returns the value from the bottom of an array.
 - `Insert(array, value)`: same as `Push`.
 - `Delete(array, value)`: delete the value from the array if found.
 - `IsEmpty(array)`: returns true if an array is empty.
