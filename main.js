@@ -71,7 +71,7 @@ const Pop = arr => arr.pop();
 
 // eslint-disable-next-line no-unused-vars
 const Enque = (arr, value) => {
-  arr.unshift(value);
+  Push(arr, value);
 };
 
 // eslint-disable-next-line no-unused-vars

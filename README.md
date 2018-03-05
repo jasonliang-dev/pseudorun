@@ -31,14 +31,6 @@ Set num to 10
 - `setIndent`
 - `textarea`
 - `toast`
-- `IsEmpty`
-- `Push`
-- `Pop`
-- `Enque`
-- `Deque`
-- `Insert`
-- `Delete`
-- `IsThere`
 
 ### Comments
 
@@ -171,6 +163,17 @@ Function clamp(number, min, max)
 Set x to clamp(10, -10, 5)
 Print x
 ```
+
+The following functions are already defined. You can override them, but you can no longer access them:
+
+- `Push(array, value)`: adds a value to the top of an array.
+- `Pop(array)`: removes and returns the value from the top of an array.
+- `Enque(array, value)`: same as `Push`.
+- `Deque`: removes and returns the value from the bottom of an array.
+- `Insert(array, value)`: same as `Push`.
+- `Delete(array, value)`: delete the value from the array if found.
+- `IsEmpty(array)`: returns true if an array is empty.
+- `IsThere(array, value)`: returns true if a value in an array is found.
 
 ### Arrays
 
