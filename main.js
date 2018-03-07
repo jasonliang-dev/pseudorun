@@ -148,9 +148,11 @@ const displayError = (error) => {
 };
 
 const convertLine = (line) => {
+  const firstWS = indexOfEnd(line, ' ');
+  const lineConvert = line.substring(0, firstWS).toLowerCase() + line.substring(firstWS);
   let rest;
 
-  const lineWords = line.split(' ');
+  const lineWords = lineConvert.split(' ');
 
   switch (lineWords[0]) {
     case '':
@@ -181,18 +183,18 @@ ${lineWords[1]} = +reserve || reserve\n`;
     case 'while':
     case 'function':
       saveIndentLevel++;
-      jscode += `${line.replace('[]', '')} {\n`;
+      jscode += `${lineConvert.replace('[]', '')} {\n`;
       break;
 
     case 'elif':
     case 'elseif':
       saveIndentLevel++;
-      rest = line.substring(line.indexOf('if ') + 3);
+      rest = line.substring(lineConvert.indexOf('if ') + 3);
       jscode += `else if ${rest} {\n`;
       break;
 
     case 'return':
-      jscode += `${line}\n`;
+      jscode += `${lineConvert}\n`;
       break;
 
     case 'array':
@@ -220,7 +222,7 @@ ${lineWords[1]} = +reserve || reserve\n`;
     default:
       if (lineWords[1] === '<--') {
         rest = line.substring(line.indexOf('<--') + 3);
-        jscode += `${lineWords[0]} = ${rest}\n`;
+        jscode += `${line.substring(0, line.indexOf(' '))} =${rest}\n`;
       } else {
         displayError(new Error(`Unreconized keyword '${lineWords[0]}'`));
       }
@@ -283,8 +285,6 @@ runButton.onclick = () => {
       .replace(/ is less than /gi, ' <= ')
       .replace(/>==/g, '>=')
       .replace(/ is greater than /gi, ' >= ');
-    const firstWS = indexOfEnd(line, ' ');
-    line = line.substring(0, firstWS).toLowerCase() + line.substring(firstWS);
     convertLine(line);
   }
 
