@@ -157,6 +157,7 @@ const convertLine = (line) => {
   switch (lineWords[0]) {
     case '':
       break;
+
     case 'set':
       rest = line.substring(line.indexOf('to ') + 3);
       jscode += `${lineWords[1]} = ${rest}\n`;
@@ -175,7 +176,7 @@ ${lineWords[1]} = +reserve || reserve\n`;
     case 'display':
     case 'output':
       rest = line.substring(line.indexOf(' ') + 1);
-      jscode += `output.innerHTML += ${rest} + "</br>"\n`;
+      jscode += `output.innerHTML += (${rest}) + "</br>"\n`;
       break;
 
     case 'if':
