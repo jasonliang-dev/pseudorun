@@ -267,14 +267,13 @@ runButton.onclick = () => {
 
     line = line
       .substring(0, indexOfEnd(line, '//'))
+      .replace(/[(]/g, ' (')
       .replace(/else if/i, 'else if')
       .replace(/true/gi, 'true')
       .replace(/false/gi, 'false')
       .replace(/ and /gi, ' && ')
       .replace(/ or /gi, ' || ')
       .replace(/[(]not /gi, '(!')
-      .replace(/ not[(]/gi, '!(')
-      .replace(/[(]not[(]/gi, '(!(')
       .replace(/ not /gi, ' !')
       .replace(/=/g, '==')
       .replace(/ equals /gi, ' == ')
