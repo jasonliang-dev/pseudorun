@@ -225,7 +225,7 @@ ${lineWords[1]} = +reserve || reserve\n`;
         rest = line.substring(line.indexOf('<--') + 3);
         jscode += `${line.substring(0, line.indexOf(' '))} =${rest}\n`;
       } else {
-        displayError(new Error(`Unreconized keyword '${lineWords[0]}'`));
+        jscode += `${line}\n`;
       }
   }
 };
